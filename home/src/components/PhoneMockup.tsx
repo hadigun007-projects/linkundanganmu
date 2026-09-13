@@ -12,6 +12,7 @@ export default function PhoneMockup() {
   const [isAutoScrolling, setIsAutoScrolling] = useState(true);
   const [isPausedByInteraction, setIsPausedByInteraction] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   // Measure container dimensions and compute responsive scale for 390px mobile viewport
   const updateScale = useCallback(() => {
@@ -56,6 +57,23 @@ export default function PhoneMockup() {
       const doc = iframeRef.current?.contentDocument;
       if (!doc) return;
 
+      // Inject zero-gutter floating scrollbar into embedded iframe
+      const styleEl = doc.createElement('style');
+      styleEl.textContent = `
+        html, body {
+          scrollbar-width: none !important;
+          -ms-overflow-style: none !important;
+          overflow-y: overlay !important;
+        }
+        ::-webkit-scrollbar {
+          width: 0px !important;
+          height: 0px !important;
+          display: none !important;
+          background: transparent !important;
+        }
+      `;
+      doc.head.appendChild(styleEl);
+
       // Auto-open cover gate after 2.5s for seamless preview demo
       const autoOpenTimer = setTimeout(() => {
         ensureInvitationOpened();
@@ -83,6 +101,16 @@ export default function PhoneMockup() {
       }, { passive: true });
       doc.addEventListener('touchstart', pauseScrolling, { passive: true });
       doc.addEventListener('touchend', () => resumeScrolling(3000), { passive: true });
+      doc.addEventListener('scroll', () => {
+        const win = iframeRef.current?.contentWindow;
+        if (win && doc.documentElement) {
+          const scrollY = win.scrollY || doc.documentElement.scrollTop;
+          const maxScroll = doc.documentElement.scrollHeight - win.innerHeight;
+          if (maxScroll > 0) {
+            setScrollProgress(Math.min(1, Math.max(0, scrollY / maxScroll)));
+          }
+        }
+      }, { passive: true });
 
       return () => {
         clearTimeout(autoOpenTimer);
@@ -110,11 +138,15 @@ export default function PhoneMockup() {
           const maxScroll = doc.documentElement.scrollHeight - win.innerHeight;
 
           if (maxScroll > 100) {
+            // Update floating scroll progress (0 to 1)
+            setScrollProgress(Math.min(1, Math.max(0, scrollY / maxScroll)));
+
             // Reached near bottom, pause and loop back to top
             if (scrollY >= maxScroll - 10) {
               isResetting = true;
               setTimeout(() => {
                 win.scrollTo({ top: 0, behavior: 'smooth' });
+                setScrollProgress(0);
                 setTimeout(() => {
                   isResetting = false;
                 }, 1800);
@@ -141,6 +173,7 @@ export default function PhoneMockup() {
       const win = iframeRef.current?.contentWindow;
       if (win) {
         win.scrollTo({ top: 0, behavior: 'smooth' });
+        setScrollProgress(0);
       }
     } catch {
       // Safe catch
@@ -217,6 +250,17 @@ export default function PhoneMockup() {
                 height: `${iframeHeight}px`,
                 transform: `scale(${scale})`,
                 transformOrigin: 'top left',
+              }}
+            />
+          </div>
+
+          {/* Floating iOS-style Scroll Indicator (Mengambang di atas konten tanpa memakan space) */}
+          <div className="absolute right-1 top-16 bottom-16 w-1 pointer-events-none z-40">
+            <div 
+              className="w-1 bg-amber-400/80 backdrop-blur-xs rounded-full shadow-xs transition-transform duration-75 ease-out"
+              style={{
+                height: '36px',
+                transform: `translateY(${scrollProgress * ((containerRef.current?.clientHeight || 580) - 150)}px)`,
               }}
             />
           </div>
