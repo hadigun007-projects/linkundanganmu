@@ -20,7 +20,7 @@ export default function HeroSection() {
  };
 
  return (
- <section className="relative pt-28 pb-20 sm:pt-36 sm:pb-28 md:pt-40 md:pb-32 overflow-hidden bg-[#FAF4EC]">
+ <section className="relative pt-28 pb-20 sm:pt-36 sm:pb-28 md:pt-40 md:pb-32 overflow-hidden bg-gradient-to-b from-[#FFFDF9] via-[#FAF4EC] to-[#FAF4EC]">
 
  {/* 1. Background Botanical Line-Art & Pastel Watercolor (Kualitas Tinggi Persis Gambar Referensi) */}
  <FloralDecorations />

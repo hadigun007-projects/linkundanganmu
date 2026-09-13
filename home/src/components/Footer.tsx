@@ -4,9 +4,12 @@ import React from 'react';
 import { Heart, Phone, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
- return (
- <footer className="bg-[#1C1512] text-stone-300 pt-16 pb-12 border-t border-stone-800">
- <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  return (
+    <footer className="bg-gradient-to-b from-[#17110E] via-[#140E0C] to-[#0E0A08] text-stone-300 pt-16 pb-12 relative">
+      {/* Soft Luminous Hairline Divider */}
+      <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-amber-400/20 to-transparent"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
  
  {/* Main Footer Columns */}
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-stone-800/80">

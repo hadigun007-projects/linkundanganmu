@@ -25,7 +25,7 @@ export default function TemplateShowcase() {
   ];
 
   return (
-    <section id="tema" className="py-24 bg-[#FCFBF7] relative">
+    <section id="tema" className="py-24 bg-gradient-to-b from-[#FCFBF7] via-[#FCFBF7] to-[#FFF9F5] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}

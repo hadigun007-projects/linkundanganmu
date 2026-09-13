@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { Music, CheckCircle2, Play, Pause, RotateCcw, ExternalLink, Sparkles } from 'lucide-react';
 
 export default function PhoneMockup() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -8,6 +9,7 @@ export default function PhoneMockup() {
 
   const [scale, setScale] = useState(0.76);
   const [iframeHeight, setIframeHeight] = useState(820);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
   const [isPausedByInteraction, setIsPausedByInteraction] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -121,7 +123,7 @@ export default function PhoneMockup() {
 
   // Continuous auto-scroll loop
   useEffect(() => {
-    if (isPausedByInteraction || !isLoaded) return;
+    if (!isAutoScrolling || isPausedByInteraction || !isLoaded) return;
 
     let animId: number;
     let isResetting = false;
@@ -164,7 +166,19 @@ export default function PhoneMockup() {
 
     animId = requestAnimationFrame(scrollLoop);
     return () => cancelAnimationFrame(animId);
-  }, [isPausedByInteraction, isLoaded]);
+  }, [isAutoScrolling, isPausedByInteraction, isLoaded]);
+
+  const resetToTop = () => {
+    try {
+      const win = iframeRef.current?.contentWindow;
+      if (win) {
+        win.scrollTo({ top: 0, behavior: 'smooth' });
+        setScrollProgress(0);
+      }
+    } catch {
+      // Safe catch
+    }
+  };
 
   return (
     <div className="relative mx-auto flex flex-col items-center select-none">
@@ -172,7 +186,7 @@ export default function PhoneMockup() {
       {/* Cheerful Warm Ambient Glow behind Phone */}
       <div className="absolute -inset-6 bg-gradient-to-tr from-rose-400/25 via-amber-300/30 to-orange-400/25 blur-3xl -z-10 rounded-[60px] animate-pulse"></div>
 
-      {/* Phone Frame (iPhone 16 Pro Style) */}
+      {/* Phone Frame (iPhone 16 Pro Style) berada di z-10 di depan badge */}
       <div className="relative z-10 w-[285px] sm:w-[325px] h-[580px] sm:h-[630px] bg-stone-900 rounded-[50px] p-3.5 shadow-2xl ring-2 ring-stone-700/80 border-[3px] border-amber-400/30 flex flex-col">
 
         {/* Dynamic Island */}
@@ -230,7 +244,6 @@ export default function PhoneMockup() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }

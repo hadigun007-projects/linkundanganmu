@@ -11,16 +11,20 @@ export default function FAQSection() {
  setOpenIndex(openIndex === index ? null : index);
  };
 
- return (
- <section id="faq" className="py-24 bg-[#FCFBF7] relative">
- <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
- 
- {/* Section Header */}
- <div className="text-center mb-16">
- <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-rose-100 border border-rose-200 text-rose-800 text-xs font-bold uppercase tracking-widest mb-3">
- <HelpCircle className="w-3.5 h-3.5 text-rose-600" />
- <span>Paling Sering Ditanyakan </span>
- </div>
+  return (
+    <section id="faq" className="py-24 pb-32 bg-gradient-to-b from-[#FAF4EC] via-[#F7EFE6] to-[#EFE4D6] relative overflow-hidden">
+      
+      {/* Smooth Cinematic Gradient Transition into Dark CTA */}
+      <div className="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-b from-transparent via-[#241C18]/60 to-[#241C18] pointer-events-none z-0"></div>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-rose-100 border border-rose-200 text-rose-800 text-xs font-bold uppercase tracking-widest mb-3">
+            <HelpCircle className="w-3.5 h-3.5 text-rose-600" />
+            <span>Paling Sering Ditanyakan</span>
+          </div>
  <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
  Gak Perlu Bingung, Semuanya Gampang!
  </h2>
