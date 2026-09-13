@@ -11,7 +11,6 @@ export default function PhoneMockup() {
   const [iframeHeight, setIframeHeight] = useState(820);
   const [isAutoScrolling, setIsAutoScrolling] = useState(true);
   const [isPausedByInteraction, setIsPausedByInteraction] = useState(false);
-  const [activeTab, setActiveTab] = useState<'cover' | 'mempelai' | 'acara' | 'rsvp' | 'hadiah'>('cover');
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Measure container dimensions and compute responsive scale for 390px mobile viewport
@@ -116,7 +115,6 @@ export default function PhoneMockup() {
               isResetting = true;
               setTimeout(() => {
                 win.scrollTo({ top: 0, behavior: 'smooth' });
-                setActiveTab('cover');
                 setTimeout(() => {
                   isResetting = false;
                 }, 1800);
@@ -124,14 +122,6 @@ export default function PhoneMockup() {
             } else {
               // Gentle 60fps auto-scroll (~1.1px per frame)
               win.scrollBy(0, 1.1);
-
-              // Update active tab indicator based on scroll position
-              const scrollPercent = scrollY / maxScroll;
-              if (scrollPercent < 0.15) setActiveTab('cover');
-              else if (scrollPercent < 0.4) setActiveTab('mempelai');
-              else if (scrollPercent < 0.65) setActiveTab('acara');
-              else if (scrollPercent < 0.85) setActiveTab('rsvp');
-              else setActiveTab('hadiah');
             }
           }
         }
@@ -146,44 +136,11 @@ export default function PhoneMockup() {
     return () => cancelAnimationFrame(animId);
   }, [isAutoScrolling, isPausedByInteraction, isLoaded]);
 
-  // Navigate to specific section inside embedded invitation
-  const navigateToSection = (tab: 'cover' | 'mempelai' | 'acara' | 'rsvp' | 'hadiah') => {
-    setActiveTab(tab);
-    setIsPausedByInteraction(true);
-
-    try {
-      const win = iframeRef.current?.contentWindow;
-      const doc = iframeRef.current?.contentDocument;
-      if (!win || !doc) return;
-
-      if (tab === 'cover') {
-        win.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        ensureInvitationOpened();
-        setTimeout(() => {
-          const targetId = tab === 'mempelai' ? 'mempelai' : tab === 'acara' ? 'acara' : tab === 'rsvp' ? 'rsvp' : 'hadiah';
-          const targetEl = doc.getElementById(targetId);
-          if (targetEl) {
-            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }, 150);
-      }
-    } catch {
-      // Safe catch
-    }
-
-    // Resume auto-scroll after 4s
-    setTimeout(() => {
-      setIsPausedByInteraction(false);
-    }, 4000);
-  };
-
   const resetToTop = () => {
     try {
       const win = iframeRef.current?.contentWindow;
       if (win) {
         win.scrollTo({ top: 0, behavior: 'smooth' });
-        setActiveTab('cover');
       }
     } catch {
       // Safe catch
@@ -254,7 +211,7 @@ export default function PhoneMockup() {
               src="/templates/wedding-rustic/index.html?to=Sahabat+Tercinta"
               title="Demo Undangan Pernikahan"
               onLoad={handleIframeLoad}
-              className="border-0 select-auto"
+              className="border-0 select-auto w-full h-full"
               style={{
                 width: '390px',
                 height: `${iframeHeight}px`,
@@ -262,23 +219,6 @@ export default function PhoneMockup() {
                 transformOrigin: 'top left',
               }}
             />
-          </div>
-
-          {/* Mini Bottom Screen Switcher Tabs */}
-          <div className="relative z-30 p-2 bg-[#231E1B]/95 backdrop-blur-md border-t border-amber-900/40 flex justify-around items-center">
-            {(['cover', 'mempelai', 'acara', 'rsvp', 'hadiah'] as const).map(tab => (
-              <button
-                key={tab}
-                onClick={() => navigateToSection(tab)}
-                className={`px-2 py-1 rounded-lg text-[10px] font-bold capitalize transition-all ${
-                  activeTab === tab 
-                    ? 'bg-rose-500 text-white shadow-xs scale-105' 
-                    : 'text-stone-400 hover:text-stone-200'
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
           </div>
         </div>
       </div>
