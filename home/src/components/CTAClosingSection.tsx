@@ -17,14 +17,20 @@ export default function CTAClosingSection() {
   };
 
   return (
-    <section id="buat" className="py-28 bg-gradient-to-b from-[#241C18] via-[#1E1613] to-[#17110E] relative overflow-hidden text-white">
+    <section
+      id="buat"
+      className="pt-36 pb-28 relative overflow-hidden text-white"
+      style={{
+        background: 'linear-gradient(180deg, #FAF4EC 0%, #EFE2D4 10%, #CBA992 22%, #865E47 38%, #4A3123 54%, #261914 72%, #17110E 100%)'
+      }}
+    >
       
       {/* Warm Ambient Blur Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-80 bg-gradient-to-r from-rose-500/25 via-amber-500/20 to-orange-500/25 blur-3xl pointer-events-none -z-0"></div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
         
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-amber-300/40 text-amber-300 text-xs font-bold uppercase tracking-widest backdrop-blur-md">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-900/60 border border-amber-300/40 text-amber-300 text-xs font-bold uppercase tracking-widest backdrop-blur-md shadow-sm">
           <Sparkles className="w-4 h-4 text-amber-300" />
           <span>Langkah Awal Menuju Hari Bahagia</span>
         </div>

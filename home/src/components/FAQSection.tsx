@@ -12,11 +12,7 @@ export default function FAQSection() {
  };
 
   return (
-    <section id="faq" className="py-24 pb-32 bg-gradient-to-b from-[#FAF4EC] via-[#F7EFE6] to-[#EFE4D6] relative overflow-hidden">
-      
-      {/* Smooth Cinematic Gradient Transition into Dark CTA */}
-      <div className="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-b from-transparent via-[#241C18]/60 to-[#241C18] pointer-events-none z-0"></div>
-
+    <section id="faq" className="py-24 pb-28 bg-[#FAF4EC] relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
