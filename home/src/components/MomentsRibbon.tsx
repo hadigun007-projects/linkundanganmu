@@ -8,37 +8,37 @@ const MOMENT_PHOTOS = [
  url: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop',
  title: 'The First Look',
  caption: 'Tatapan penuh cinta di pelaminan',
- tag: 'Momen Sakral '
+ tag: 'Momen Sakral'
  },
  {
  url: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600&auto=format&fit=crop',
  title: 'Golden Sunset Walk',
  caption: 'Langkah awal menuju masa depan bersama',
- tag: 'Prewedding Manis '
+ tag: 'Prewedding Manis'
  },
  {
  url: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=600&auto=format&fit=crop',
  title: 'Cincin Pengikat Janji',
  caption: 'Lambang kesetiaan seumur hidup',
- tag: 'The Vows '
+ tag: 'The Vows'
  },
  {
  url: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=600&auto=format&fit=crop',
  title: 'Genggaman Hangat',
  caption: 'Melewati suka dan duka berdua',
- tag: 'True Love '
+ tag: 'True Love'
  },
  {
  url: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=600&auto=format&fit=crop',
  title: 'Bunga Kebahagiaan',
  caption: 'Doa restu dari para sahabat terkasih',
- tag: 'Bouquet Toss '
+ tag: 'Bouquet Toss'
  },
  {
  url: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop',
  title: 'Senyuman Pengantin',
  caption: 'Hari paling bahagia yang tak terlupakan',
- tag: 'Pure Joy '
+ tag: 'Pure Joy'
  }
 ];
 
@@ -47,19 +47,19 @@ export default function MomentsRibbon() {
  const duplicatedPhotos = [...MOMENT_PHOTOS, ...MOMENT_PHOTOS];
 
  return (
- <div className="relative py-12 bg-gradient-to-b from-[#FAF5EE] via-[#FFF9F5] to-[#FCFBF7] overflow-hidden border-y border-rose-100/60">
+ <div className="relative py-14 bg-gradient-to-b from-[#FAF4EC] via-[#FDF9F5] to-[#FCFBF7] overflow-hidden">
 
  {/* Header Label */}
  <div className="max-w-7xl mx-auto px-4 text-center mb-6">
- <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full border-rose-200 text-rose-800 text-xs font-bold uppercase tracking-widest">
+ <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-xs border border-rose-200/70 text-rose-800 text-xs font-bold uppercase tracking-widest shadow-2xs">
  <span>Setiap Detik yang Dirayakan Menjadi Kenangan Abadi</span>
  <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
  </div>
  </div>
 
  {/* Left & Right Soft Blur Gradient Masks */}
- <div className="absolute top-0 bottom-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-[#FAF5EE] to-transparent z-20 pointer-events-none"></div>
- <div className="absolute top-0 bottom-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-[#FAF5EE] to-transparent z-20 pointer-events-none"></div>
+ <div className="absolute top-0 bottom-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-[#FAF4EC]/90 via-[#FAF4EC]/30 to-transparent z-20 pointer-events-none"></div>
+ <div className="absolute top-0 bottom-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-[#FAF4EC]/90 via-[#FAF4EC]/30 to-transparent z-20 pointer-events-none"></div>
 
  {/* Infinite Horizontal Marquee Track */}
  <div className="animate-marquee gap-5 py-2">
