@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #FCFBF7;
+    --foreground: #1E1B18;
+    --font-serif-luxury: 'Playfair Display', serif;
+    --font-sans-modern: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans-modern);
+    overflow-x: hidden;
+    selection-background-color: #FF8A73;
+    selection-color: #FFFFFF;
+  }
+}
+
+/* Custom Cheerful & Warm Utilities */
+.font-luxury {
+  font-family: var(--font-serif-luxury);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #D97706 0%, #F59E0B 40%, #EA580C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-cheerful-gradient {
+  background: linear-gradient(135deg, #FF6B4A 0%, #FFA149 50%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 50%, #D97706 100%);
+}
+
+.bg-gold-gradient:hover {
+  background: linear-gradient(135deg, #FBBF24 0%, #FCD34D 50%, #EA580C 100%);
+}
+
+.bg-cheerful-gradient {
+  background: linear-gradient(135deg, #FF6B4A 0%, #FFA149 50%, #F59E0B 100%);
+}
+
+.bg-cheerful-gradient:hover {
+  background: linear-gradient(135deg, #FF7E61 0%, #FFB366 50%, #FBBF24 100%);
+}
+
+.cheerful-glow {
+  box-shadow: 0 12px 30px -4px rgba(255, 107, 74, 0.28);
+}
+
+.gold-glow {
+  box-shadow: 0 10px 25px -3px rgba(245, 158, 11, 0.25);
+}
+
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(254, 215, 170, 0.5);
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #FF6B4A 0%, #FED7AA 50%, #FF6B4A 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3.5s infinite linear;
+}
+
+/* Floating Heart Animation */
+@keyframes float-heart {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-70px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.animate-float-heart {
+  animation: float-heart 2s ease-out forwards;
+}
+
+/* Slow Spin */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+/* Bounce Slow */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+/* Infinite Marquee for Moments Ribbon */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Float Animations for Polaroids */
+@keyframes float-gentle-1 {
+  0%, 100% { transform: translateY(0px) rotate(-5deg); }
+  50% { transform: translateY(-10px) rotate(-3deg); }
+}
+
+@keyframes float-gentle-2 {
+  0%, 100% { transform: translateY(0px) rotate(6deg); }
+  50% { transform: translateY(-12px) rotate(8deg); }
+}
+
+@keyframes float-gentle-3 {
+  0%, 100% { transform: translateY(0px) rotate(-3deg); }
+  50% { transform: translateY(-8px) rotate(-5deg); }
+}
+
+.animate-float-polaroid-1 {
+  animation: float-gentle-1 5s ease-in-out infinite;
+}
+
+.animate-float-polaroid-2 {
+  animation: float-gentle-2 6s ease-in-out infinite;
+}
+
+.animate-float-polaroid-3 {
+  animation: float-gentle-3 5.5s ease-in-out infinite;
+}

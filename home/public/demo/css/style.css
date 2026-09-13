@@ -1,0 +1,278 @@
+/* ==========================================================================
+   Undangan Pernikahan Digital - Mobile-First Luxury Styling
+   Palet Warna: Warm Cream, Warm Taupe, Champagne Gold
+   ========================================================================== */
+
+:root {
+  --color-cream-50: #FCFBF7;
+  --color-cream-100: #F9F6F0;
+  --color-cream-200: #F3ECE2;
+  --color-cream-300: #EADDCF;
+  --color-taupe-50: #F5F3F1;
+  --color-taupe-100: #E7E2DD;
+  --color-taupe-300: #BAAEA3;
+  --color-taupe-500: #8C7E74;
+  --color-taupe-700: #5C5248;
+  --color-taupe-900: #332B25;
+  --color-gold-300: #E8CA83;
+  --color-gold-400: #D8B763;
+  --color-gold-500: #C5A059;
+  --color-gold-600: #A88238;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream-100);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-taupe-300);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-500);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #231E1B;
+  color: var(--color-taupe-900);
+  overflow-x: hidden;
+}
+
+/* Typography Classes */
+.font-serif-luxury {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.font-serif-heading {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-script {
+  font-family: 'Great Vibes', cursive;
+}
+
+/* Gold Gradient Text & Effects */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #F5E5B8 50%, #AA7A1E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-subtle {
+  background: linear-gradient(135deg, #C5A059 0%, #E8D3A7 50%, #9B7834 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #C5A059 0%, #DFC07D 50%, #A37E36 100%);
+}
+
+.bg-gold-gradient:hover {
+  background: linear-gradient(135deg, #D4AF37 0%, #EAD49E 50%, #B58B40 100%);
+}
+
+.border-gold-gradient {
+  border-image: linear-gradient(135deg, #C5A059, #F5E5B8, #A37E36) 1;
+}
+
+.gold-glow {
+  box-shadow: 0 4px 20px -2px rgba(197, 160, 89, 0.35);
+}
+
+.gold-glow-lg {
+  box-shadow: 0 10px 30px -4px rgba(197, 160, 89, 0.45);
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.btn-shimmer {
+  background: linear-gradient(90deg, #C5A059 0%, #F3E5AB 50%, #C5A059 100%);
+  background-size: 200% 100%;
+  animation: shimmer 4s infinite linear;
+}
+
+/* Vinyl Rotate Animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.paused {
+  animation-play-state: paused !important;
+}
+
+/* Floating pulse animation */
+@keyframes soft-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.animate-soft-pulse {
+  animation: soft-pulse 3s ease-in-out infinite;
+}
+
+/* Floating Subtle Float */
+@keyframes subtle-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-subtle-float {
+  animation: subtle-float 4s ease-in-out infinite;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(216, 183, 99, 0.28);
+}
+
+.glass-card-dark {
+  background: rgba(45, 38, 33, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(216, 183, 99, 0.35);
+}
+
+/* ATM / Bank Card Gradient */
+.bank-card-bca {
+  background: linear-gradient(135deg, #1d3557 0%, #15253b 60%, #0d1b2a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.bank-card-mandiri {
+  background: linear-gradient(135deg, #382c1e 0%, #2b2116 60%, #1a140d 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* Mobile Frame Container: Centered on desktop, 100% full width on mobile */
+.mobile-container {
+  width: 100%;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--color-cream-100);
+  min-height: 100vh;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+}
+
+/* Ambient Desktop Backdrop styling */
+.desktop-ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image: 
+    radial-gradient(circle at 15% 20%, rgba(197, 160, 89, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(140, 126, 116, 0.15) 0%, transparent 50%),
+    linear-gradient(180deg, #1d1815 0%, #2a231f 100%);
+  pointer-events: none;
+}
+
+/* Canvas falling petals */
+#petals-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 30;
+}
+
+/* Arch Shape for Photos */
+.arch-frame {
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+}
+
+/* Golden Decorative Border Line */
+.gold-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.gold-divider::before,
+.gold-divider::after {
+  content: '';
+  height: 1px;
+  width: 50px;
+  background: linear-gradient(90deg, transparent, #C5A059, transparent);
+}
+
+/* Sound Wave Animation */
+.sound-bar {
+  display: inline-block;
+  width: 3px;
+  height: 14px;
+  margin: 0 1px;
+  background-color: #C5A059;
+  border-radius: 2px;
+  animation: sound-bounce 1.2s ease-in-out infinite alternate;
+}
+
+.sound-bar:nth-child(2) { animation-delay: 0.2s; height: 18px; }
+.sound-bar:nth-child(3) { animation-delay: 0.4s; height: 10px; }
+.sound-bar:nth-child(4) { animation-delay: 0.1s; height: 16px; }
+
+@keyframes sound-bounce {
+  0% { height: 4px; }
+  100% { height: 20px; }
+}
+
+.sound-bar-paused {
+  animation: none !important;
+  height: 4px !important;
+}
+
+/* Toast styling */
+#toast-notification {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(100px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+#toast-notification.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
