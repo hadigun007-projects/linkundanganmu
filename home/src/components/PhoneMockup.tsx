@@ -182,12 +182,12 @@ export default function PhoneMockup() {
 
   return (
     <div className="relative mx-auto flex flex-col items-center select-none">
-      
+
       {/* Cheerful Warm Ambient Glow behind Phone */}
       <div className="absolute -inset-6 bg-gradient-to-tr from-rose-400/25 via-amber-300/30 to-orange-400/25 blur-3xl -z-10 rounded-[60px] animate-pulse"></div>
 
-      {/* Floating Badge 1: Real-time RSVP (Ditempatkan di belakang ponsel agar tidak menutupi layar) */}
-      <div className="absolute -left-12 sm:-left-24 top-20 z-0 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-rose-200/80 flex items-center gap-3 animate-bounce-slow">
+      {/* Floating Badge 1: Real-time RSVP (Mengintip di belakang sisi kiri ponsel, tidak menutupi layar) */}
+      <div className="absolute -left-16 sm:-left-24 top-24 z-0 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-rose-200/80 flex items-center gap-3 animate-bounce-slow">
         <div className="w-9 h-9 rounded-2xl bg-gradient-to-tr from-rose-500 to-amber-400 flex items-center justify-center text-white shadow-xs">
           <CheckCircle2 className="w-5 h-5 text-white" />
         </div>
@@ -197,8 +197,8 @@ export default function PhoneMockup() {
         </div>
       </div>
 
-      {/* Floating Badge 2: Musik Romantis (Ditempatkan di belakang ponsel) */}
-      <div className="absolute -right-10 sm:-right-20 bottom-36 z-0 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-amber-200/80 flex items-center gap-3">
+      {/* Floating Badge 2: Musik Romantis (Mengintip di belakang sisi kanan ponsel) */}
+      <div className="absolute -right-12 sm:-right-20 bottom-36 z-0 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-amber-200/80 flex items-center gap-3">
         <div className="w-9 h-9 rounded-2xl bg-gradient-to-tr from-amber-400 to-rose-400 flex items-center justify-center text-white shadow-xs animate-spin-slow">
           <Music className="w-4 h-4" />
         </div>
@@ -210,7 +210,7 @@ export default function PhoneMockup() {
 
       {/* Phone Frame (iPhone 16 Pro Style) berada di z-10 di depan badge */}
       <div className="relative z-10 w-[285px] sm:w-[325px] h-[580px] sm:h-[630px] bg-stone-900 rounded-[50px] p-3.5 shadow-2xl ring-2 ring-stone-700/80 border-[3px] border-amber-400/30 flex flex-col">
-        
+
         {/* Dynamic Island */}
         <div className="absolute top-5 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-40 flex items-center justify-center shadow-xs pointer-events-none">
           <div className="w-2.5 h-2.5 rounded-full bg-stone-900 mr-2"></div>
@@ -218,7 +218,7 @@ export default function PhoneMockup() {
         </div>
 
         {/* Screen Container */}
-        <div 
+        <div
           ref={containerRef}
           className="relative w-full flex-1 bg-[#1E1916] rounded-[38px] overflow-hidden flex flex-col justify-between text-slate-900 shadow-inner border border-stone-800"
           onMouseEnter={() => setIsPausedByInteraction(true)}
@@ -256,7 +256,7 @@ export default function PhoneMockup() {
 
           {/* Floating iOS-style Scroll Indicator (Mengambang di atas konten tanpa memakan space) */}
           <div className="absolute right-1 top-16 bottom-16 w-1 pointer-events-none z-40">
-            <div 
+            <div
               className="w-1 bg-amber-400/80 backdrop-blur-xs rounded-full shadow-xs transition-transform duration-75 ease-out"
               style={{
                 height: '36px',
@@ -266,17 +266,16 @@ export default function PhoneMockup() {
           </div>
         </div>
       </div>
-      
+
       {/* Interactive Controls below Phone */}
       <div className="flex flex-wrap items-center justify-center gap-2.5 mt-4">
         {/* Toggle Auto-Scroll Button */}
         <button
           onClick={() => setIsAutoScrolling(prev => !prev)}
-          className={`text-xs font-bold flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border transition active:scale-95 shadow-2xs ${
-            isAutoScrolling && !isPausedByInteraction
+          className={`text-xs font-bold flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border transition active:scale-95 shadow-2xs ${isAutoScrolling && !isPausedByInteraction
               ? 'bg-rose-100 text-rose-700 border-rose-200 hover:bg-rose-200'
               : 'bg-amber-100 text-amber-800 border-amber-300 hover:bg-amber-200'
-          }`}
+            }`}
           title={isAutoScrolling ? 'Klik untuk jeda scroll' : 'Klik untuk putar scroll otomatis'}
         >
           {isAutoScrolling && !isPausedByInteraction ? (
