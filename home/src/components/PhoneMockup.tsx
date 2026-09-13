@@ -186,8 +186,8 @@ export default function PhoneMockup() {
       {/* Cheerful Warm Ambient Glow behind Phone */}
       <div className="absolute -inset-6 bg-gradient-to-tr from-rose-400/25 via-amber-300/30 to-orange-400/25 blur-3xl -z-10 rounded-[60px] animate-pulse"></div>
 
-      {/* Floating Badge 1: Real-time RSVP */}
-      <div className="absolute -left-6 sm:-left-12 top-20 z-30 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-rose-200/80 flex items-center gap-3 animate-bounce-slow">
+      {/* Floating Badge 1: Real-time RSVP (Ditempatkan di belakang ponsel agar tidak menutupi layar) */}
+      <div className="absolute -left-12 sm:-left-24 top-20 z-0 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-rose-200/80 flex items-center gap-3 animate-bounce-slow">
         <div className="w-9 h-9 rounded-2xl bg-gradient-to-tr from-rose-500 to-amber-400 flex items-center justify-center text-white shadow-xs">
           <CheckCircle2 className="w-5 h-5 text-white" />
         </div>
@@ -197,8 +197,8 @@ export default function PhoneMockup() {
         </div>
       </div>
 
-      {/* Floating Badge 2: Musik Romantis */}
-      <div className="absolute -right-4 sm:-right-10 bottom-36 z-30 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-amber-200/80 flex items-center gap-3">
+      {/* Floating Badge 2: Musik Romantis (Ditempatkan di belakang ponsel) */}
+      <div className="absolute -right-10 sm:-right-20 bottom-36 z-0 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-amber-200/80 flex items-center gap-3">
         <div className="w-9 h-9 rounded-2xl bg-gradient-to-tr from-amber-400 to-rose-400 flex items-center justify-center text-white shadow-xs animate-spin-slow">
           <Music className="w-4 h-4" />
         </div>
@@ -208,8 +208,8 @@ export default function PhoneMockup() {
         </div>
       </div>
 
-      {/* Phone Frame (iPhone 16 Pro Style) */}
-      <div className="relative w-[285px] sm:w-[325px] h-[580px] sm:h-[630px] bg-stone-900 rounded-[50px] p-3.5 shadow-2xl ring-2 ring-stone-700/80 border-[3px] border-amber-400/30 flex flex-col">
+      {/* Phone Frame (iPhone 16 Pro Style) berada di z-10 di depan badge */}
+      <div className="relative z-10 w-[285px] sm:w-[325px] h-[580px] sm:h-[630px] bg-stone-900 rounded-[50px] p-3.5 shadow-2xl ring-2 ring-stone-700/80 border-[3px] border-amber-400/30 flex flex-col">
         
         {/* Dynamic Island */}
         <div className="absolute top-5 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-40 flex items-center justify-center shadow-xs pointer-events-none">
