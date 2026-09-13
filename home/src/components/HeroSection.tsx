@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
-import { ArrowRight, Star, Smartphone, Image as ImageIcon } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Star } from 'lucide-react';
 import PhoneMockup from './PhoneMockup';
 import FloralDecorations from './FloralDecorations';
 import confetti from 'canvas-confetti';
 
 export default function HeroSection() {
- const [viewMode, setViewMode] = useState<'polaroid' | 'phone'>('polaroid');
 
  const triggerConfetti = () => {
  try {
@@ -62,94 +61,9 @@ export default function HeroSection() {
  </div>
  </div>
 
- {/* SISI KANAN: Foto Polaroid Momen Indah dengan Selotip Kuning & Daun Emas (Persis Gambar Referensi) */}
+ {/* SISI KANAN: Interactive Phone Mockup (Default) */}
  <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
-
- {/* Toggle View Switcher */}
- <div className="mb-4 inline-flex items-center p-1 rounded-full bg-white/90 border border-stone-200 shadow-xs z-30">
- <button
- onClick={() => setViewMode('polaroid')}
- className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold transition-all ${viewMode === 'polaroid'
- ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white shadow-xs'
- : 'text-stone-600 hover:text-slate-900'
- }`}
- >
- <ImageIcon className="w-3.5 h-3.5" />
- <span>Foto Polaroid </span>
- </button>
- <button
- onClick={() => setViewMode('phone')}
- className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold transition-all ${viewMode === 'phone'
- ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white shadow-xs'
- : 'text-stone-600 hover:text-slate-900'
- }`}
- >
- <Smartphone className="w-3.5 h-3.5" />
- <span>Simulasi HP </span>
- </button>
- </div>
-
- {/* TAMPILAN 1: POLAROID UTAMA (PERSIS SEPERTI GAMBAR REFERENSI USER) */}
- {viewMode === 'polaroid' ? (
- <div className="relative my-4 flex items-center justify-center animate-fade-in">
-
- {/* Background Glow */}
- <div className="absolute -inset-6 bg-gradient-to-tr from-amber-200/40 via-rose-100/30 to-transparent blur-2xl -z-10 rounded-3xl"></div>
-
- {/* Frame Polaroid */}
- <div className="relative w-64 sm:w-72 md:w-80 bg-white p-3.5 sm:p-4 pb-7 sm:pb-8 rounded-2xl shadow-2xl border border-stone-200/90 -rotate-2 hover:rotate-0 transition-transform duration-500">
-
- {/* Selotip Kuning / Yellow Washi Tape di Atas Tengah (Persis Referensi) */}
- <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-24 sm:w-28 h-7 sm:h-8 bg-[#F6CE57] border-y border-amber-400/50 shadow-xs z-30 flex items-center justify-center">
- <div className="w-full h-[1px] bg-amber-400/30"></div>
- </div>
-
- {/* Dedaunan Emas Asli di Sudut Kiri Atas (100% PNG Transparan) */}
- <div className="absolute -top-10 -left-10 w-24 h-24 pointer-events-none z-20">
- <img
- src="/golden-leaves.png"
- alt="Golden Leaves"
- className="w-full h-full object-contain -rotate-45 drop-shadow-xs"
- />
- </div>
-
- {/* Dedaunan Emas Asli di Sudut Kanan Bawah (100% PNG Transparan) */}
- <div className="absolute -bottom-10 -right-10 w-28 h-28 pointer-events-none z-20">
- <img
- src="/golden-leaves.png"
- alt="Golden Leaves"
- className="w-full h-full object-contain rotate-135 drop-shadow-xs"
- />
- </div>
-
- {/* Foto Momen Pengantin dengan Buket Bunga (Groom in Suit, Bride in Gown with Bouquet) */}
- <div className="relative w-full h-64 sm:h-72 rounded-lg overflow-hidden bg-stone-100 shadow-inner">
- <img
- src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop"
- alt="Momen Indah Pengantin"
- className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
- />
- </div>
-
- {/* Caption Estetik */}
- <div className="mt-3 text-center">
- <p className="font-serif text-sm font-bold text-slate-800 tracking-wide">
- Arya & Sarah
- </p>
- <p className="text-[11px] text-stone-500 font-medium tracking-widest uppercase">
- 24 • 10 • 2026
- </p>
- </div>
-
- </div>
- </div>
- ) : (
- /* TAMPILAN 2: INTERACTIVE PHONE MOCKUP */
- <div className="animate-fade-in">
  <PhoneMockup />
- </div>
- )}
-
  </div>
 
  </div>
