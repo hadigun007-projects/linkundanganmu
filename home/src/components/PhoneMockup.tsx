@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Music, CheckCircle2, Play, Pause, RotateCcw, ExternalLink, Sparkles } from 'lucide-react';
+import { Music, CheckCircle2 } from 'lucide-react';
 
 export default function PhoneMockup() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -9,7 +9,6 @@ export default function PhoneMockup() {
 
   const [scale, setScale] = useState(0.76);
   const [iframeHeight, setIframeHeight] = useState(820);
-  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
   const [isPausedByInteraction, setIsPausedByInteraction] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -123,7 +122,7 @@ export default function PhoneMockup() {
 
   // Continuous auto-scroll loop
   useEffect(() => {
-    if (!isAutoScrolling || isPausedByInteraction || !isLoaded) return;
+    if (isPausedByInteraction || !isLoaded) return;
 
     let animId: number;
     let isResetting = false;
@@ -166,19 +165,7 @@ export default function PhoneMockup() {
 
     animId = requestAnimationFrame(scrollLoop);
     return () => cancelAnimationFrame(animId);
-  }, [isAutoScrolling, isPausedByInteraction, isLoaded]);
-
-  const resetToTop = () => {
-    try {
-      const win = iframeRef.current?.contentWindow;
-      if (win) {
-        win.scrollTo({ top: 0, behavior: 'smooth' });
-        setScrollProgress(0);
-      }
-    } catch {
-      // Safe catch
-    }
-  };
+  }, [isPausedByInteraction, isLoaded]);
 
   return (
     <div className="relative mx-auto flex flex-col items-center select-none">
@@ -265,53 +252,6 @@ export default function PhoneMockup() {
             />
           </div>
         </div>
-      </div>
-
-      {/* Interactive Controls below Phone */}
-      <div className="flex flex-wrap items-center justify-center gap-2.5 mt-4">
-        {/* Toggle Auto-Scroll Button */}
-        <button
-          onClick={() => setIsAutoScrolling(prev => !prev)}
-          className={`text-xs font-bold flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border transition active:scale-95 shadow-2xs ${isAutoScrolling && !isPausedByInteraction
-              ? 'bg-rose-100 text-rose-700 border-rose-200 hover:bg-rose-200'
-              : 'bg-amber-100 text-amber-800 border-amber-300 hover:bg-amber-200'
-            }`}
-          title={isAutoScrolling ? 'Klik untuk jeda scroll' : 'Klik untuk putar scroll otomatis'}
-        >
-          {isAutoScrolling && !isPausedByInteraction ? (
-            <>
-              <Pause className="w-3.5 h-3.5 fill-rose-600" />
-              <span>Scroll Otomatis: Aktif</span>
-            </>
-          ) : (
-            <>
-              <Play className="w-3.5 h-3.5 fill-amber-700" />
-              <span>Lanjutkan Scroll</span>
-            </>
-          )}
-        </button>
-
-        {/* Reset to Top */}
-        <button
-          onClick={resetToTop}
-          className="text-xs font-semibold text-stone-600 hover:text-stone-900 flex items-center gap-1 px-3 py-1.5 rounded-full bg-white border border-stone-200 shadow-2xs hover:bg-stone-50 transition active:scale-95"
-          title="Kembali ke bagian atas cover"
-        >
-          <RotateCcw className="w-3 h-3" />
-          <span>Ke Atas</span>
-        </button>
-
-        {/* Open in New Tab */}
-        <a
-          href="/templates/wedding-rustic/index.html?to=Sahabat+Tercinta"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs font-bold text-rose-600 hover:text-rose-700 flex items-center gap-1 px-3 py-1.5 rounded-full bg-rose-50 border border-rose-200 shadow-2xs hover:bg-rose-100 transition active:scale-95"
-          title="Buka halaman undangan penuh di tab baru"
-        >
-          <ExternalLink className="w-3 h-3" />
-          <span>Buka Tab Penuh</span>
-        </a>
       </div>
 
     </div>
