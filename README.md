@@ -65,3 +65,23 @@ npm run dev
 npm run dev:api
 ```
 Server berjalan di: `http://localhost:5000`
+
+---
+
+## 4. Deployment Produksi (Docker & Docker Compose)
+
+Proyek ini siap di-deploy ke server produksi menggunakan Docker Compose dengan Nginx reverse proxy terintegrasi.
+
+**Jalankan Cepat:**
+```bash
+# 1. Buat file konfigurasi lingkungan
+cp .env.example .env
+
+# 2. Build dan jalankan semua kontainer di background
+docker compose up -d --build
+
+# 3. Cek status kontainer
+docker compose ps
+```
+
+Panduan lengkap instalasi di VPS, konfigurasi domain, SSL Let's Encrypt, dan troubleshooting dapat dibaca di **[DEPLOYMENT.md](file:///Users/hadiyahku/code/invite/DEPLOYMENT.md)**.
